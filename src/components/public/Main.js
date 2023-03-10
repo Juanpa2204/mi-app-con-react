@@ -1,18 +1,21 @@
 import React, { Component } from "react";
+import RickAndMortyService from "../../services/RickAndMorty.Service";
 import { Cards } from "./Cards";
 
 export default class Main extends Component {
   constructor(props) {
     super(props);
-    console.log("hola desde el constructor");
+    this.state = { mascotas : [] };
   }
 
   componentDidMount() {
-    console.log("holis desde el componentDidmount");
+
+    RickAndMortyService.getAllCharacters()
+    .then((data)=>this.setState({mascotas : data.results} ))
+    .catch((Error)=> console.log(Error)); 
   }
 
   render() {
-    console.log("hola desde el render");
     return (
       <main>
         <section className="py-5 text-center container">
@@ -35,7 +38,7 @@ export default class Main extends Component {
             </div>
           </div>
         </section>
-        <Cards/>
+        <Cards mascotas={this.state.mascotas}/>
       </main>);
   }
 }
