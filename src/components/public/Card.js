@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 
 const Card = ({ mascota }) => {
     return (
@@ -10,6 +11,7 @@ const Card = ({ mascota }) => {
                     src={mascota.image}
                     alt="imagen"
                 />
+
                 <h3 className="mb-0 text-dark">{mascota.name}</h3>
 
                 <div className="card-body">
@@ -24,13 +26,10 @@ const Card = ({ mascota }) => {
                                 type="button"
                                 className="btn btn-sm btn-outline-secondary"
                             >
-                                View
-                            </button>
-                            <button
-                                type="button"
-                                className="btn btn-sm btn-outline-secondary"
-                            >
-                                Edit
+                                <Link to={`/details/${mascota.id}`} className="nav-link">
+                                    View
+                                </Link>
+
                             </button>
                         </div>
                         <small className="text-muted">9 mins</small>
