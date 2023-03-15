@@ -5,7 +5,7 @@ import { Route, Routes, BrowserRouter} from 'react-router-dom';
 import Main from './components/public/Main';
 import Navbar from './components/public/Navbar';
 import UserForm from './components/public/UserForm';
-import Details from './components/public/Details';
+import { Details } from './components/public/Details';
 
 function App() {
   return (
