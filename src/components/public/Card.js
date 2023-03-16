@@ -32,7 +32,8 @@ const Card = ({ mascota }) => {
 
                             </button>
                         </div>
-                        <small className="text-muted">9 mins</small>
+                        <p>Last known location:</p>
+                        <small className="text-muted">${mascota.origin.name}</small>
                     </div>
                 </div>
             </div>

@@ -13,6 +13,7 @@ export const Details = () => {
             .then((data) => setMascota(data))
     }, [])
 
+
     console.log(mascota);
 
     const detailCard = {
@@ -42,6 +43,8 @@ export const Details = () => {
                         </div>
                         <div className="mb-1 text-muted">
                             {mascota.status}
+                        </div>
+                        <div className="mb-1 text-muted">
                         </div>
                         <div>
                             <button
