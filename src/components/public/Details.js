@@ -10,11 +10,15 @@ export const Details = () => {
 
     useEffect(() => {
         RickAndMortyService.getCharactersById(id)
-            .then((data) => setMascota(data))
-    }, [])
+            .then((data) => {
+                console.log(data);
+                setMascota(data)
 
+            })
+    }, [id])
 
     console.log(mascota);
+
 
     const detailCard = {
         width: '80%',
@@ -40,6 +44,11 @@ export const Details = () => {
                         </div>
                         <div className="mb-1 text-muted">
                             {mascota.species}
+                            {mascota.location?.name}
+                            
+                        </div>
+                        <div className="mb-1 text-muted">
+                            {mascota.origin?.name}
                         </div>
                         <div className="mb-1 text-muted">
                             {mascota.status}

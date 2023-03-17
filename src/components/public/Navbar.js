@@ -1,17 +1,11 @@
-import React from 'react'
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from 'react'
+import { Link, useParams } from 'react-router-dom';
 import RickAndMortyService from '../../services/RickAndMorty.Service';
 
 const Navbar = () => {
 
-    const [mascota, setMascota] = useState({});
+    const [mascota, setMascota] = useState([]);
     const { id } = useParams();
-
-
-    useEffect(() => {
-        RickAndMortyService.getCharactersById(id)
-            .then((data) => setMascota(data))
-    }, [])
 
     return (
         <header className="p-3 text-bg-dark">
@@ -22,12 +16,12 @@ const Navbar = () => {
                         <li><a href="#" className="nav-link px-2 text-secondary">Home</a></li>
                     </ul>
                     <form className="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
-                        <input type="search" className="form-control form-control-dark text-bg-dark" placeholder="Search..." aria-label="Search" />
+                        <input type="search" className="form-control form-control-dark text-bg-dark" placeholder="Search..." aria-label="Search"/>
                     </form>
                     <div className="text-end">
                         <button type="button" className="btn btn-outline-light me-2">Login</button>
                         <button type="button" className="btn btn-outline-light me-2"><Link to={"/user-form"}>Sign-up
-</Link></button>
+                        </Link></button>
                     </div>
                 </div>
             </div>

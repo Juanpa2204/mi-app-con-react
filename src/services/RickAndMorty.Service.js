@@ -6,13 +6,14 @@ class RickAndMortyService {
     async getAllCharacters() {
         const response = await fetch(API_RM.CHARACTERS());
         //Intercepto
-        return response.json();
+        return await response.json();
     }
 
     async getCharactersById(id) {
         const response = await fetch(API_RM.CHARACTER_BY_ID(id));
         //Intercepto
-        return response.json();
+        const data=await response.json()
+        return data ;
     }
 }
 
