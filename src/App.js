@@ -6,7 +6,8 @@ import Main from './components/public/Main';
 import Navbar from './components/public/Navbar';
 import UserForm from './components/public/UserForm';
 import { Details } from './components/public/Details';
-import secondPag from './components/public/secondPag';
+import { Pagination } from './components/public/Pagination';
+
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route path="/user-form" element={<UserForm/>} />
           <Route pata="/segundaPage" element={<secondPag/>}/>
         </Routes>
+        <Pagination/>
         <Footer />  
     </div>
   );

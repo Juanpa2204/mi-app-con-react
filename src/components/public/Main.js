@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Cards } from "./Cards";
 import { Link } from 'react-router-dom';
 
+
 export default class Main extends Component {
   constructor(props) {
     super(props);
@@ -37,14 +38,6 @@ export default class Main extends Component {
           </div>
         </section>
         <Cards />
-        <button
-                                type="button"
-                                className="btn btn-sm"
-                            >
-                                <Link to={"/segundaPage"} className="mt-3 btn btn-primary btn-lg">
-                                    Siguiente pagina
-                                </Link>
-                            </button>
       </main>);
   }
 }
