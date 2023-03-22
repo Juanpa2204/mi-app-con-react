@@ -1,26 +1,56 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { Pagination } from 'react-bootstrap';
 
-export const Pagination = () => {
+
+export const Paginattion = () => {
+    const [mascota, setMascotas] = useState({});
+    const [infoPage, setInfoPage] = useState({});
+    const [itemPagination, setItemPagination] = useState([]);
+
+    
+     
+    const GetList = (page, url) => {
+        let uri=
+            page === null
+                ? url
+                : `https://rickandmortyapi.com/api/character/?page=${page}`;
+
+        fetch(uri)
+            .then((response) => response.json())
+            .then((data) => {
+                setMascotas(data.results);
+                setInfoPage(data.info);
+            });
+    };
+
+    useEffect(() => {
+        GetList(0, null);
+    }, []);
+
+    useEffect(() => {
+        let items = []
+        for (let i = 1; i < infoPage.pages; i++) {
+            items.push(
+                <Pagination.Item 
+                    key={i} 
+                    onClick={(e) => { 
+                        GetList(parseInt(e.target.text), null);
+                    }}
+                >
+                    {i}
+                </Pagination.Item>
+                );
+        }
+        setItemPagination(items);
+    }, [infoPage])
 
     return (
-        <div className="container">
-            <nav aria-label="Page navigation example">
-                <ul class="pagination">
-                    <li class="page-item">
-                        <a class="page-link" href="#" aria-label="Previous">
-                            <span aria-hidden="true">&laquo;</span>
-                        </a>
-                    </li>
-                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item">
-                        <a class="page-link" href="#" aria-label="Next">
-                            <span aria-hidden="true">&raquo;</span>
-                        </a>
-                    </li>
-                </ul>
-            </nav>
-        </div>
+        <Pagination>
+            <Pagination.Prev/>
+                {itemPagination.map((item)=>{
+                    return item;
+                })}
+            <Pagination.Next />
+        </Pagination>
     )
-}
+};

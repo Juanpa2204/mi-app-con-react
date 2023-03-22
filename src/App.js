@@ -6,8 +6,6 @@ import Main from './components/public/Main';
 import Navbar from './components/public/Navbar';
 import UserForm from './components/public/UserForm';
 import { Details } from './components/public/Details';
-import { Pagination } from './components/public/Pagination';
-
 
 function App() {
   return (
@@ -17,9 +15,7 @@ function App() {
           <Route exact path="/" element={<Main/>} />
           <Route path="/details/:id" element={<Details/>} />
           <Route path="/user-form" element={<UserForm/>} />
-          <Route pata="/segundaPage" element={<secondPag/>}/>
         </Routes>
-        <Pagination/>
         <Footer />  
     </div>
   );
