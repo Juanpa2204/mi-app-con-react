@@ -14,7 +14,7 @@ export const Footer = () => {
             <footer className="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
                 <p className="col-md-4 mb-0 text-muted">&copy; {year}, {companyName} Clicks={clicks}</p>
                 <span onClick={handleClick}>
-                    <img src="https://icons.iconarchive.com/icons/google/noto-emoji-animals-nature/1024/22214-dog-face-icon.png" className='App-logo'></img>
+                    <img src="https://th.bing.com/th/id/R.0c0d18e1da988112205ae7a38569a5df?rik=BLBQDdyy%2frmfSw&pid=ImgRaw&r=0" className='App-logo'></img>
                 </span>
 
                 <ul className="nav col-md-4 justify-content-end">

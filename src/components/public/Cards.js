@@ -1,30 +1,24 @@
-import React, { useEffect, useState } from 'react'
-import RickAndMortyService from "../../services/RickAndMorty.Service";
+import React, { useEffect, useState } from 'react';
+import RickAndMortyService from '../../services/RickAndMorty.Service';
 import Card from './Card';
-import { Pagination } from 'react-bootstrap';
-
+import Page from './Pagination';
 
 export const Cards = () => {
-
     const [mascotas, setMascotas] = useState([]);
+    const [infoPage, setInfoPage] = useState({});
 
     useEffect(() => {
-        RickAndMortyService.getAllCharacters()
-           
-            .catch((Error) => console.log(Error));
-    }, [mascotas])
-
-    const [infoPage, setInfoPage] = useState({});
-    const [itemPagination, setItemPagination] = useState([]);
-
-
+        RickAndMortyService.getAllCharacters().then((data) => {
+            setMascotas(data.results);
+            setInfoPage(data.info);
+        }).catch((error) => console.log(error));
+    }, []);
 
     const GetList = (page, url) => {
         let uri =
             page === null
                 ? url
                 : `https://rickandmortyapi.com/api/character/?page=${page}`;
-
         fetch(uri)
             .then((response) => response.json())
             .then((data) => {
@@ -33,28 +27,8 @@ export const Cards = () => {
             });
     };
 
-    useEffect(() => {
-        GetList(0, null);
-    }, []);
+    const cardsList = mascotas.map((m) => <Card mascota={m} key={m.id} />);
 
-    useEffect(() => {
-        let items = []
-        for (let i = 1; i < infoPage.pages; i++) {
-            items.push(
-                <Pagination.Item
-                    key={i}
-                    onClick={(e) => {
-                        GetList(parseInt(e.target.text), null);
-                    }}
-                >
-                    {i}
-                </Pagination.Item>
-            );
-        }
-        setItemPagination(items);
-    }, [infoPage])
-
-    const cardsList = mascotas.map((m) => <Card mascota={m} key={m.id} />)
     return (
         <div>
             <div className="album py-5 bg-light">
@@ -64,17 +38,9 @@ export const Cards = () => {
                     </div>
                 </div>
             </div>
-            <div>
-                <Pagination>
-                    <Pagination.Prev/>
-                    {itemPagination.map((item) => {
-                        return item;
-                    })}
-                    <Pagination.Next />
-                </Pagination></div>
+            <div className="Pagination">
+                <Page infoPage={infoPage} GetList={GetList} />
+            </div>
         </div>
-
-    )
-}
-
-
+    );
+};
