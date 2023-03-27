@@ -10,7 +10,6 @@ import { Details } from './components/public/Details';
 function App() {
   return (
     <div className='App'>
-        <Navbar />
         <Routes>
           <Route exact path="/" element={<Main/>} />
           <Route path="/details/:id" element={<Details/>} />

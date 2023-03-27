@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const Card = ({ mascota }) => {
     return (
-        <div className="col">
+        <div className="conjunto col">
             <div className="card shadow-sm">
                 <img
                     className="bd-placeholder-img card-img-top"
