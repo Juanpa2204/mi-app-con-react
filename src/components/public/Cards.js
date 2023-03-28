@@ -31,8 +31,6 @@ export const Cards = () => {
             });
     };
 
-
-
     const handleSearch = (event) => {
         event.preventDefault();
         setSearchTerm(event.target.value.toLowerCase());
